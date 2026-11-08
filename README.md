@@ -14,7 +14,7 @@ It is the code classification sibling of the Cyber ML Lab. If you have used that
 one, this is the same idea but for code classification: inspect the datasets, train a model, read the confusion matrix,
 investigate the errors, change one variable, compare.
 
-## The idea in one minute
+## The idea behind this lab
 
 A detection rule, such as an EKFiddle regex, either matches or it does not. It is
 exact. It catches the patterns you wrote down and nothing else, and it has no
@@ -252,4 +252,4 @@ treat it as untrusted and handle it only on an isolated analysis machine.
 `SECURITY.md` has the details.
 
 **These synthetic scores are a teaching illustration, not a production detection
-rate. Do not treat any number here as expected real-world performance.**
+rate. Do not treat any number here as expected real world performance.**
