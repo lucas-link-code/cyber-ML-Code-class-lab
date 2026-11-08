@@ -1,0 +1,29 @@
+## Sample detection rules, EKFiddle CustomRegexes format.
+## Usage: [Type] TAB [Regex name] TAB [Regex] TAB [comment (optional)]
+##   Type is one of: IP / URI / SourceCode / Headers / Hash
+##
+## These are GENERIC, publicly documented indicators of suspicious browser
+## JavaScript and HTML. They are shipped only so the lab runs out of the box
+## and so the labelling-function exercise has something to apply. They are NOT
+## anyone's production rule set. To use your own rules, drop a CustomRegexes.txt
+## into rules/local/ (that folder is git-ignored) and the labeller picks it up.
+##
+## Columns are TAB separated. Lines starting with # are ignored.
+
+# Decode-and-execute patterns
+SourceCode	Eval_Or_Function_Constructor	(?:eval|new\s+Function|Function)\s*\(	Dynamic code execution entry point
+SourceCode	Atob_Base64_Decode	atob\s*\(	Base64 decode, common first stage
+SourceCode	FromCharCode_Decode	String\.fromCharCode\s*\(	Char-code string assembly
+SourceCode	Unescape_Percent_Decode	(?:eval\s*\(\s*)?unescape\s*\(	Percent-encoded decode, often with eval
+SourceCode	Hex_Escaped_Blob	(?:\\x[0-9A-Fa-f]{2}){4,}	Run of hex string escapes
+
+# Obfuscation markers
+SourceCode	Hex_Array_Obfuscation	_0x[0-9A-Fa-f]{4,}	Hex-named lookup array, typical packer output
+SourceCode	Split_Function_Name	window\[["']Func["']\s*\+	Function name assembled by concatenation
+
+# Injection and beacon structure
+SourceCode	Hidden_Iframe_Write	document\.write\([^)]*<iframe	Script-written iframe injection
+SourceCode	Image_Beacon	\(new\s+Image\)\.src\s*=	One-pixel image used as a data beacon
+
+# URL indicator (applied to URLs, shown here for completeness)
+URI	Reserved_Collector_Host	collector\.example	Example beacon collector host

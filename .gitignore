@@ -1,0 +1,26 @@
+# Virtual environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# PRIVATE: your own detection rules and any captured code samples stay local.
+# The labeller reads rules from rules/local/, which is never committed.
+rules/local/*
+!rules/local/.gitkeep
+CustomRegexes.txt
+**/CustomRegexes.txt
+
+# Private captured samples and any CSV or score derived from them.
+# Anchored so this does not also hide rules/local/.
+/local/
+
+# Generated experiment artefacts (regenerate with the scripts)
+outputs/*
+!outputs/.gitkeep
+charts/*
+!charts/.gitkeep
+
+# Local planning notes
+*_plan.md

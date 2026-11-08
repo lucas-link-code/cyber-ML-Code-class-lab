@@ -1,0 +1,5 @@
+# Python >=3.11. Same stack as the sibling Cyber ML Lab, nothing extra.
+numpy>=1.26,<3
+pandas>=2.2,<3
+scikit-learn>=1.5,<2
+matplotlib>=3.8,<4
